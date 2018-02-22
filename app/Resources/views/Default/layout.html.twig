@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+{% block menu %}
+    <li  class="start active ">
+        <a href="javascript:;">
+            <i class="icon-puzzle"></i>
+            <span class="title">Dashboard</span>
+            <span class="selected" class="arrow "></span>
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('famille_index') }}">
+            <i class="icon-home"></i>
+            <span class="title">Familles d'article</span>
+            <span class="selected"></span>
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('article_index') }}">
+            <i class="icon-home"></i>
+         <span class="title">Articles</span>
+          <span class="selected"></span>
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('facture_index') }}">
+            <i class="icon-home"></i>
+            <span class="title">Factures</span>
+            <span class="selected"></span>
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('tva_index') }}">
+            <i class="icon-home"></i>
+            <span class="title">TVA</span>
+            <span class="selected"></span>
+        </a>
+    </li>
+{% endblock %}

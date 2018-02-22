@@ -1,0 +1,41 @@
+{% extends 'modepaiement/layout.html.twig' %}
+
+{% block content %}
+    <h1>Modepaiements list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Code</th>
+                <th>Libelle</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for modePaiement in modePaiements %}
+            <tr>
+                <td><a href="{{ path('modepaiement_show', { 'id': modePaiement.id }) }}">{{ modePaiement.id }}</a></td>
+                <td>{{ modePaiement.code }}</td>
+                <td>{{ modePaiement.libelle }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('modepaiement_show', { 'id': modePaiement.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('modepaiement_edit', { 'id': modePaiement.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('modepaiement_new') }}">Create a new modePaiement</a>
+        </li>
+    </ul>
+{% endblock %}

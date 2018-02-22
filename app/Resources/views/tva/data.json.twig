@@ -1,0 +1,21 @@
+{
+    "data": [
+        {% for tva in tvas %}
+        [
+            "{{ tva.id }}",
+            "{{ tva.Type }}",
+            "{{ tva.Taux }}",
+            "{{ tva.Datedeb|date("d/m/Y") }}",
+            {% if tva.Datefin is not null %}
+                "{{ tva.Datefin|date("d/m/Y") }}",
+            {% else %}
+                "",
+            {% endif %}
+            "<div class=\"margin-bottom-5\"><a href=\"{{ path('tva_edit', { 'id': tva.id }) }}\" class=\"btn btn-sm btn-warning margin-bottom\"><i class=\"fa fa-search\"></i> Editer</a></div>"
+        ]{% if (loop.last == false) %},{% endif %}
+        {% endfor %}
+    ],
+    "draw": "{{ draw }}",
+    "recordsTotal": "{{ recordsTotal }}",
+    "recordsFiltered": "{{ recordsFiltered }}"
+}

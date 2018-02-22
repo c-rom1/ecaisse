@@ -1,0 +1,74 @@
+{% extends 'tva/layout.html.twig' %}
+
+{% block content_entete %}Création d'une TVA{% endblock %}
+
+{% block content %}
+
+    {{ form_start(form) }}
+    
+    <div class="form-body">
+
+        <div class="form-group">
+            {{ form_label(form.type) }}
+            <div class="input-group input-medium" >
+                {{ form_widget(form.type, {'attr': {'class': 'form-control'} }) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(form.taux) }}
+            <div class="input-group input-medium" >
+                {{ form_widget(form.taux, {'attr': {'class': 'form-control'} }) }}
+        
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(form.dateDeb) }}
+            <div class="input-group input-medium date date-picker" data-date-format="dd-mm-yyyy" data-date-viewmode="years">
+                {{ form_widget(form.dateDeb, {'attr': {'class': 'form-control', 'readonly':''} }) }}
+                <span class="input-group-btn">
+                    <button class="btn btn-info" type="button"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(form.dateFin) }}
+            <div class="input-group input-medium date date-picker" data-date="12-02-2012" data-date-format="dd-mm-yyyy" data-date-viewmode="years">
+                {{ form_widget(form.dateFin, {'attr': {'class': 'form-control', 'readonly':''} }) }}
+                <span class="input-group-btn">
+                    <button class="btn btn-info" type="button"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        
+                
+                
+    </div>
+        
+     {{ form_widget(form) }}
+        <div class="btn-group">
+            <input class="btn btn-primary" type="submit" value="Créer" />
+
+            <div class="btn-group">
+                <a class="btn btn-success dropdown-toggle" href="{{ path('tva_index') }}">
+                    <i class="fa fa-share"></i>
+                    <span class="hidden-480">Retour </span>
+                </a>
+            </div>
+        </div>
+
+    {{ form_end(form) }}
+{% endblock %}
+
+
+{% block javascript %}
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+<script src="{{ asset('assets/scripts/app.js') }}"></script>
+<script src="{{ asset('assets/scripts/datatable.js') }}"></script>
+<script src="{{ asset('assets/scripts/table-ajax.js') }}"></script>
+<script>
+    jQuery(document).ready(function() {
+        App.init();
+        TableAjax.init();
+    });
+</script>
+{% endblock %}

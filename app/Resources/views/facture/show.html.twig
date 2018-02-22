@@ -1,0 +1,48 @@
+{% extends 'facture/layout.html.twig' %}
+
+{% block content %}
+    <h1>Facture</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ facture.id }}</td>
+            </tr>
+            <tr>
+                <th>Numero</th>
+                <td>{{ facture.numero }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{% if facture.date %}{{ facture.date|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Totalht</th>
+                <td>{{ facture.totalHt }}</td>
+            </tr>
+            <tr>
+                <th>Totaltva</th>
+                <td>{{ facture.totalTva }}</td>
+            </tr>
+            <tr>
+                <th>Totalttc</th>
+                <td>{{ facture.totalTtc }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('facture_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('facture_edit', { 'id': facture.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

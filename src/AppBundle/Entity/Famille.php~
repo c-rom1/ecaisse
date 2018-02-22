@@ -1,0 +1,50 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Famille
+ *
+ * @ORM\Table(name="famille", indexes={@ORM\Index(name="fk_PRODUIT_TVA_idx", columns={"tva_id"})})
+ * @ORM\Entity
+ */
+class Famille
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="code", type="bigint", nullable=false)
+     */
+    private $code;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="libelle", type="string", length=45, nullable=false)
+     */
+    private $libelle;
+
+    /**
+     * @var \Tva
+     *
+     * @ORM\ManyToOne(targetEntity="Tva")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tva_id", referencedColumnName="id")
+     * })
+     */
+    private $tva;
+
+
+}
+

@@ -1,0 +1,47 @@
+{% extends 'facture/layout.html.twig' %}
+
+{% block content %}
+    <h1>Factures list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Numero</th>
+                <th>Date</th>
+                <th>Totalht</th>
+                <th>Totaltva</th>
+                <th>Totalttc</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for facture in factures %}
+            <tr>
+                <td><a href="{{ path('facture_show', { 'id': facture.id }) }}">{{ facture.id }}</a></td>
+                <td>{{ facture.numero }}</td>
+                <td>{% if facture.date %}{{ facture.date|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ facture.totalHt }}</td>
+                <td>{{ facture.totalTva }}</td>
+                <td>{{ facture.totalTtc }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('facture_show', { 'id': facture.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('facture_edit', { 'id': facture.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('facture_new') }}">Create a new facture</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,61 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Facture
+ *
+ * @ORM\Table(name="facture")
+ * @ORM\Entity
+ */
+class Facture
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="numero", type="bigint", nullable=false)
+     */
+    private $numero;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="date", nullable=true)
+     */
+    private $date;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="total_ht", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $totalHt;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="total_tva", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $totalTva;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="total_ttc", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $totalTtc;
+
+
+}
+

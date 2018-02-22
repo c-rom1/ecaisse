@@ -1,0 +1,39 @@
+{% extends 'facturepaiement/layout.html.twig' %}
+
+{% block content %}
+    <h1>Facturepaiements list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Montant</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for facturePaiement in facturePaiements %}
+            <tr>
+                <td><a href="{{ path('facturepaiement_show', { 'id': facturePaiement.id }) }}">{{ facturePaiement.id }}</a></td>
+                <td>{{ facturePaiement.montant }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('facturepaiement_show', { 'id': facturePaiement.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('facturepaiement_edit', { 'id': facturePaiement.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('facturepaiement_new') }}">Create a new facturePaiement</a>
+        </li>
+    </ul>
+{% endblock %}

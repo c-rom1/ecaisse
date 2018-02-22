@@ -1,0 +1,48 @@
+{% extends 'article/layout.html.twig' %}
+
+{% block content_entete %}Edition {% endblock %}
+
+{% block content %}
+
+
+    <div class="form-body">
+        {{ form_start(edit_form) }}
+        <div class="form-body">
+            <div class="form-group">
+                {{ form_label(edit_form.famille) }}
+                {{ form_widget(edit_form.famille, {'attr': {'class': 'form-control'} }) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(edit_form.code) }}
+                {{ form_widget(edit_form.code, {'attr': {'class': 'form-control'} }) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(edit_form.libelle) }}
+                {{ form_widget(edit_form.libelle, {'attr': {'class': 'form-control'} }) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(edit_form.prixUnitaire) }}
+                {{ form_widget(edit_form.prixUnitaire, {'attr': {'class': 'form-control'} }) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(edit_form.tva) }}
+                {{ form_widget(edit_form.tva, {'attr': {'class': 'form-control'} }) }}
+            </div>
+        </div>
+
+        <div class="btn-group">
+            <input class="btn btn-primary filter-submit " type="submit" value="Edit" />
+            {{ form_end(edit_form) }}
+            {{ form_start(delete_form) }}
+            <input class="btn btn-danger filter-cancel filter-submit " type="submit" value="Supprimer" />
+            {{ form_end(delete_form) }}
+
+            <a class="btn btn-success dropdown-toggle" href="{{ path('article_index') }}">
+                <i class="fa fa-share"></i>
+                <span class="hidden-480">Retour </span>
+            </a>
+        </div>
+
+    </div>
+
+{% endblock %}

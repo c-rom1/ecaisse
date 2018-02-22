@@ -1,0 +1,18 @@
+{
+    "data": [
+        {% for article in articles %}
+        [
+            "{{ article.id }}",
+            "{{ article.famille }}",
+            "{{ article.code }}",
+            "{{ article.libelle }}",
+            "{{ article.prixUnitaire }}",
+            "{{ article.tva }}",
+            "<div class=\"margin-bottom-5\"><a href=\"{{ path('article_edit', { 'id': article.id }) }}\" class=\"btn btn-sm btn-warning margin-bottom\"><i class=\"fa fa-search\"></i> Editer</a></div>"
+        ]{% if (loop.last == false) %},{% endif %}
+        {% endfor %}
+    ],
+    "draw": "{{ draw }}",
+    "recordsTotal": "{{ recordsTotal }}",
+    "recordsFiltered": "{{ recordsFiltered }}"
+}

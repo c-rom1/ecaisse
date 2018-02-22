@@ -1,0 +1,14 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: ecaisse
+    database_user: root
+    database_password: null
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    secret: 81040432f143da3ea534e255895b120d9f836956
+    mailer_sender_adress: no-reply@icrm.com
+    mailer_sender_name: ICrm

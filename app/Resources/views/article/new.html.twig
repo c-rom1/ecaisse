@@ -1,0 +1,45 @@
+{% extends 'article/layout.html.twig' %}
+
+{% block content_entete %}Création d'un article{% endblock %}
+
+{% block content %}
+
+    {{ form_start(form) }}
+    <div class="form-body">
+        <div class="form-group">
+            {{ form_label(form.famille) }}
+            {{ form_widget(form.famille, {'attr': {'class': 'form-control'} }) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.code) }}
+            {{ form_widget(form.code, {'attr': {'class': 'form-control'} }) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.libelle) }}
+            {{ form_widget(form.libelle, {'attr': {'class': 'form-control'} }) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.prixUnitaire) }}
+            {{ form_widget(form.prixUnitaire, {'attr': {'class': 'form-control'} }) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.tva) }}
+            {{ form_widget(form.tva, {'attr': {'class': 'form-control'} }) }}
+        </div>
+    </div>
+
+    {{ form_widget(form) }}
+    <div class="btn-group">
+        <input class="btn btn-primary" type="submit" value="Créer" />
+
+        <div class="btn-group">
+            <a class="btn btn-success dropdown-toggle" href="{{ path('article_index') }}">
+                <i class="fa fa-share"></i>
+                <span class="hidden-480">Retour </span>
+            </a>
+        </div>
+    </div>
+
+    {{ form_end(form) }}
+
+{% endblock %}

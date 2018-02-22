@@ -1,0 +1,67 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Article
+ *
+ * @ORM\Table(name="article", indexes={@ORM\Index(name="fk_ARTICLE_PRODUIT1_idx", columns={"famille_id"}), @ORM\Index(name="fk_produit_tva1_idx", columns={"tva_id"})})
+ * @ORM\Entity
+ */
+class Article
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="code", type="bigint", nullable=false)
+     */
+    private $code;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="libelle", type="string", length=45, nullable=false)
+     */
+    private $libelle;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="prix_unitaire", type="float", precision=10, scale=0, nullable=false)
+     */
+    private $prixUnitaire;
+
+    /**
+     * @var \Famille
+     *
+     * @ORM\ManyToOne(targetEntity="Famille")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="famille_id", referencedColumnName="id")
+     * })
+     */
+    private $famille;
+
+    /**
+     * @var \Tva
+     *
+     * @ORM\ManyToOne(targetEntity="Tva")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tva_id", referencedColumnName="id")
+     * })
+     */
+    private $tva;
+
+
+}
+

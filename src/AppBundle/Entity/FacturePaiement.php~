@@ -1,0 +1,53 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * FacturePaiement
+ *
+ * @ORM\Table(name="facture_paiement", indexes={@ORM\Index(name="fk_facture_paiement_paiement1_idx", columns={"mode_paiement_id"}), @ORM\Index(name="fk_facture_paiement_facture1", columns={"facture_id"})})
+ * @ORM\Entity
+ */
+class FacturePaiement
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="montant", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $montant;
+
+    /**
+     * @var \Facture
+     *
+     * @ORM\ManyToOne(targetEntity="Facture")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="facture_id", referencedColumnName="id")
+     * })
+     */
+    private $facture;
+
+    /**
+     * @var \ModePaiement
+     *
+     * @ORM\ManyToOne(targetEntity="ModePaiement")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="mode_paiement_id", referencedColumnName="id")
+     * })
+     */
+    private $modePaiement;
+
+
+}
+

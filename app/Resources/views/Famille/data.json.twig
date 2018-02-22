@@ -1,0 +1,16 @@
+{
+    "data": [
+        {% for famille in familles %}
+        [
+            "{{ famille.id }}",
+            "{{ famille.code }}",
+            "{{ famille.libelle }}",
+            "{{ famille.tva }}",
+            "<div class=\"margin-bottom-5\"><a href=\"{{ path('famille_edit', { 'id': famille.id }) }}\" class=\"btn btn-sm btn-warning margin-bottom\"><i class=\"fa fa-search\"></i> Editer</a></div>"
+        ]{% if (loop.last == false) %},{% endif %}
+        {% endfor %}
+    ],
+    "draw": "{{ draw }}",
+    "recordsTotal": "{{ recordsTotal }}",
+    "recordsFiltered": "{{ recordsFiltered }}"
+}
